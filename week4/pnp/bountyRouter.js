@@ -32,7 +32,7 @@ bountyRouter.route('/:bountyId')
 
     .delete((req, res) => {
     const bountyId = req.params.bountyId
-    const foundBounty = bounties.find(bounty => bounty._id === bountyId)
+    const bountyIndex = bounties.findIndex(bounty => bounty._id === bountyId)    
     bounties.splice(bountyIndex, 1)
     res.send("Yay, deleted ")
 })
