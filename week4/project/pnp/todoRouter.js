@@ -49,7 +49,7 @@ todoRouter.route('/:todoId')
     const todoId = req.params.todoId
     const todoIndex = todos.findIndex(todo => todo._id === todoId)
     const updateTodo = Object.assign(todos[todoIndex], req.body)
-    res.send(updatedTodo)
+    res.send(updateTodo)
 })
 
 module.exports = todoRouter
