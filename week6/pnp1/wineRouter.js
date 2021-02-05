@@ -1,5 +1,5 @@
 const express = require("express")
-const wineRouter = express.Router()
+const router = express.Router()
 const { v4: uuidv4 } = require('uuid')
 
 const wine = [
@@ -12,21 +12,25 @@ const wine = [
     {type: "pinot noir", _id: uuidv4()}
 ]
 
-wineRouter.route("/").get((req, res) => {
+router.route("/").get((req,res) => {
     res.send(wine)
 })
 
-wineRouter.route("/").get("/:id", (req, res) => {
+router.route("/:id").get((req, res) => {
     const id = req.params.id
     const foundWine = wine.find(wine => wine._id === id)
     res.send(foundWine)
 })
 
-wineRouter.route("/").get("/search/type", (req, res) => {
-    var type = req.query.type
+
+router.route("/search/type").get((req, res) => {
+    const type = req.query.type
     const filteredWine = wine.filter(wine => wine.type === type)
     res.send(filteredWine)
 })
 
-module.exports = wineRouter
+
+
+
+module.exports = router
 
